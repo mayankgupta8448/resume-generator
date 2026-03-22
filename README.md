@@ -11,8 +11,7 @@ A modern, full-stack AI Resume Generator application that allows users to quickl
 
 ## Screenshots
 
-![AI Resume Generator Generator UI 1](https://via.placeholder.com/800x450.png?text=AI+Resume+Generator+Preview)
-*(Note: Replace this placeholder image with an actual screenshot of the running UI!)*
+![AI Resume Generator UI](assets/screenshot1.png)
 
 ## Setup Instructions
 
