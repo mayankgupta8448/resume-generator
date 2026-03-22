@@ -20,6 +20,36 @@ function App() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  const generateLocally = (data) => {
+    const { name, email, phone, summary, experience, education, skills } = data;
+    return `
+      <div class="resume-preview-content">
+        <header>
+          <h1 class="resume-name">${name || 'Jane Doe'}</h1>
+          <p class="resume-contact">${email || 'jane@example.com'} | ${phone || '(555) 123-4567'}</p>
+        </header>
+        <section class="resume-section">
+          <h2>Professional Summary</h2>
+          <p>${summary || 'Resourceful professional with a knack for creating clean and efficient code.'}</p>
+        </section>
+        <section class="resume-section">
+          <h2>Experience</h2>
+          <div class="resume-item"><p>${(experience || 'Senior Developer at Tech Co. (2020 - Present)').replace(/\n/g, '<br/>')}</p></div>
+        </section>
+        <section class="resume-section">
+          <h2>Education</h2>
+          <div class="resume-item"><p>${(education || 'B.S. in Computer Science - University of Technology').replace(/\n/g, '<br/>')}</p></div>
+        </section>
+        <section class="resume-section">
+          <h2>Skills</h2>
+          <ul class="resume-skills-list">
+            ${(skills || 'JavaScript, React, Node.js, CSS, HTML').split(',').map(s => `<li>${s.trim()}</li>`).join('')}
+          </ul>
+        </section>
+      </div>
+    `;
+  };
+
   const handleGenerate = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -28,22 +58,18 @@ function App() {
     try {
       const response = await fetch('http://localhost:3001/api/generate-resume', {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
       });
-      
       const data = await response.json();
-      
       if (data.success) {
         setResumeHTML(data.resumeHTML);
       } else {
-        setError('Failed to generate resume. Please try again.');
+        setResumeHTML(generateLocally(formData));
       }
     } catch (err) {
-      console.error(err);
-      setError('Error connecting to the backend server. Is it running on port 3001?');
+      // Fallback: generate client-side when backend is not available (e.g. GitHub Pages)
+      setResumeHTML(generateLocally(formData));
     } finally {
       setLoading(false);
     }
