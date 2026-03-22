@@ -21,6 +21,8 @@ AI-powered web application that helps users generate professional resumes with c
 
 ![AI Resume Generator UI](assets/screenshot1.png)
 
+![AI Resume Generator GitHub Page](assets/screenshot2.png)
+
 ## Setup Instructions
 
 ### Prerequisites
