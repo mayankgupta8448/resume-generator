@@ -1,6 +1,14 @@
-# AI  Based Resume Generator
+# AI Resume Generator
 
-A modern, full-stack AI Resume Generator application that allows users to quickly generate beautifully formatted, professional resumes. Built with a React frontend to provide a premium user experience and a Node.js Express backend API.
+🚀 **Live Demo**: [https://mayankgupta8448.github.io/resume-generator](https://mayankgupta8448.github.io/resume-generator)
+
+## Project Description
+
+AI-powered web application that helps users generate professional resumes with customizable templates and PDF download functionality.
+
+## GitHub Repository
+
+[https://github.com/mayankgupta8448/resume-generator](https://github.com/mayankgupta8448/resume-generator)
 
 ## Tech Stack
 
